@@ -11,35 +11,65 @@ const Container = styled.div`
 
 const Weather = styled.div`
     width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px;
+    font-weight: bold;
 `;
 
 const City = styled.div`
     text-transform:uppercase;
+    font-size: 50px;
+    margin-bottom: 10px;
 `;
 
-const TempContainer = styled.div``;
+const TempContainer = styled.div`
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+`;
 
-const Temp = styled.div``;
+const Temp = styled.div`
+    font-size: 50px; 
+    margin-bottom: 5px;
+`;
 
-const TempContent = styled.div``;
+const TempContent = styled.div`
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;    
+`;
 
-const Status = styled.div``;
+const Status = styled.div`
+    font-size: 60px;
+    margin-bottom: 30px; 
+`;
 
-const Cloud = styled.div``;
+const Cloud = styled.div`
+    margin-bottom: 10px;
+`;
 
 const Wind = styled.div``;
 
-const Img = styled.div`
+const Dress = styled.div`
     width: 100%;
     height: 100%;
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5BD99qmF4MhJqU7d5rrbofLT5R4O6I6nG9eEUH2U_B4mp8Bke");
-    background-position: center;
-    background-size: cover;
+    color: white;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
 `;
 
 
 
-const test = ({temp, tempMax, tempMin, weather, cloud, wind, name, loading, skin}) => 
+const test = ({temp, tempMax, tempMin, weather, cloud, wind, name, loading, skin, dress}) => 
     loading ? <Loader></Loader> 
     : (
         <Container>
@@ -61,13 +91,15 @@ const test = ({temp, tempMax, tempMin, weather, cloud, wind, name, loading, skin
                     {weather}
                 </Status>
                 <Cloud>
-                    {cloud}%
+                    구름량:{cloud}%
                 </Cloud>
                 <Wind>
-                    {wind}m/s
+                    풍속:{wind}m/s
                 </Wind>
             </Weather>
-            <Img></Img>
+            <Dress>
+                "{dress}"
+            </Dress>
         </Container>
     )
 

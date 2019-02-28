@@ -16,7 +16,8 @@ class GetWeather extends React.Component {
             cloud: "",
             wind: "",
             name: ""
-        }
+        },
+        dress: ""
     }
 
     componentDidMount() {
@@ -69,12 +70,46 @@ class GetWeather extends React.Component {
                 name: response.name
             }
         });
+        if(response.main.temp < 5) {
+            this.setState({
+                dress: "겨울옷(야샹, 패딩, 목도리 등등)"
+            })
+        }else if (response.mian.temp < 9) {
+            this.setState({
+                dress: "코트, 가죽자켓"
+            })
+        }else if (response.mian.temp < 11) {
+            this.setState({
+                dress: "트렌치코트, 여러겹 껴입기"
+            })
+        }else if (response.mian.temp < 16) {
+            this.setState({
+                dress: "자켓, 셔츠, 가디건"
+            })
+        }else if (response.mian.temp < 19) {
+            this.setState({
+                dress: "니트, 후드, 맨투맨"
+            })
+        }else if (response.mian.temp < 22) {
+            this.setState({
+                dress: "긴팔티, 면바지"
+            })
+        }else if (response.mian.temp < 26) {
+            this.setState({
+                dress: "반팔, 반바지"
+            })
+        }else if (response.mian.temp >= 26) {
+            this.setState({
+                dress: "나시티"
+            })
+        }
     }
 
     render() {
         console.log(this.state);
         const {weather:{temp, tempMax, tempMin, weather, cloud, wind, name},
-        loading} = this.state;
+        loading,
+        dress} = this.state;
         const skin = 13.15 + ( 0.6215 * temp) - (11.37 * Math.pow(wind, 0.15)) + ( 0.3965 * Math.pow(wind, 0.15) * temp )
         return (
             <>                
@@ -88,6 +123,7 @@ class GetWeather extends React.Component {
                     name={name}
                     loading={loading}
                     skin={skin.toFixed(2)}
+                    dress={dress}
                     >
                 </WeatherPresenter>
             </>
