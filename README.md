@@ -1,4 +1,7 @@
 # Dress_app 
 
-- [] show weather 
-- [] show dress status
+
+## View
+- [] Header 
+- [] Weather Presenter
+- [] Recommended clothes Presenter

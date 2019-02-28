@@ -57,6 +57,7 @@ class GetWeather extends React.Component {
     }
 
     saveWeather = (response) => {
+        console.log(response);
         this.setState({
             weather: {
                 temp: response.main.temp,
@@ -74,6 +75,7 @@ class GetWeather extends React.Component {
         console.log(this.state);
         const {weather:{temp, tempMax, tempMin, weather, cloud, wind, name},
         loading} = this.state;
+        const skin = 13.15 + ( 0.6215 * temp) - (11.37 * Math.pow(wind, 0.15)) + ( 0.3965 * Math.pow(wind, 0.15) * temp )
         return (
             <>                
                 <WeatherPresenter 
@@ -81,10 +83,11 @@ class GetWeather extends React.Component {
                     tempMax={tempMax}
                     tempMin={tempMin}
                     weather={weather}
-                    cloud={cloud}
+                    cloud={cloud}   
                     wind={wind}
                     name={name}
                     loading={loading}
+                    skin={skin.toFixed(2)}
                     >
                 </WeatherPresenter>
             </>
